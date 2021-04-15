@@ -8,7 +8,7 @@ cd eoa-historic-bal
 git submodule update --init --recursive
 ./install.sh
 ```
-go to https://observablehq.com/@levity/search-for-a-block-by-timestamp and enter in the timestamp you would like Dydx balance data for
+go to https://observablehq.com/@levity/search-for-a-block-by-timestamp and enter in the timestamp you would like account balance data for
 
 Enter in the block number returned by the link above into the start script below as the `--block-number-to-query` argument.
 
