@@ -1,10 +1,10 @@
-# Eoa historical bal
-The purpose of this repo is to query inventory-service.json file historically from the Ethereum blockchain and return each ethereum addresses balance accross multiple token types
+# Oasis historical bal
+The purpose of this repo is to query inventory-service.json file historically from the Ethereum blockchain and return each Oasis open order balance at a specific block.
 
 ## Setup
 ```
-git clone git@github.com:LiquidityProviders/eoa-historic-bal.git
-cd eoa-historic-bal
+git clone git@github.com:LiquidityProviders/oasis-historic-bal.git
+cd oasis-historic-bal
 git submodule update --init --recursive
 ./install.sh
 ```
@@ -105,12 +105,12 @@ Run the startfile:
  dir="$(dirname "$0")"
  export PYTHONPATH=$PYTHONPATH:$dir:$dir/lib/pymaker
 
- exec python3 -m eoa_historic_bal.main \
+ exec python3 -m oasis_historic_bal.main \
      --rpc-host <NODE> \
      --rpc-timeout 30 \
-     --block-number-to-query <BLOCKNUM>\
+     --block-number-to-query <BLOCKNUM> \
      --addresses-config 'inventory_service_config.json' \
-     $@ 2> >(tee -a ${LOGS_DIR:?}/eoa_historical_bal.log >&2)
+     $@ 2> >(tee -a ${LOGS_DIR:?}/oasis_historical_bal.log >&2)
 
 ```
 
