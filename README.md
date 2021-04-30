@@ -3,8 +3,8 @@ The purpose of this repo is to query inventory-service.json file historically fr
 
 ## Setup
 ```
-git clone git@github.com:LiquidityProviders/oasis-historic-bal.git
-cd oasis-historic-bal
+git clone git@github.com:LiquidityProviders/oasis-historical-bal.git
+cd oasis-historical-bal
 git submodule update --init --recursive
 ./install.sh
 ```
