@@ -3,6 +3,7 @@ import sys
 import json
 import requests
 import argparse
+import copy
 from web3 import Web3, HTTPProvider
 from pprint import pprint
 from pymaker import Address, web3_via_http, Wad, Contract
@@ -39,7 +40,6 @@ class OasisHistoricalBal:
 
         self.members = address_config['members']
         self.tokens = address_config['tokens']
-        self.pairs = address_config['pairs']
 
     def get_token(self, symbol):
         decimal = self.tokens[symbol].get('tokenDecimals') if self.tokens[symbol].get('tokenDecimals') else 18
@@ -56,6 +56,7 @@ class OasisHistoricalBal:
                 if token1.address != token2.address:
                     orders = oasis.get_orders(token1, token2, self.block_number)
                     our_sell_orders = filter(lambda order: order.maker == Address(member['config']['marketMakerAddress']), orders)
+                    list_sell_orders = copy.copy(our_sell_orders)
                     balance_in_our_sell_orders += sum(map(lambda order: order.pay_amount, our_sell_orders), Wad(0))
 
             if balance_in_our_sell_orders != Wad(0):
